@@ -345,57 +345,56 @@ let programmer = {
   // ● Метод toFloor должен использовать методы oneFloorUp и oneFloorDown для
   // перемещения по этажам, а также метод printFloor для вывода текущего этажа лифта.
   // ● В здании 16 этажей, нельзя, чтобы лифт мог уехать ниже первого или выше 16-го этажа.
-  
-  // ПИСАТЬ КОД ЗДЕСЬ
-  
-  let checkTask = {
-    currentFloor: 1,
-    printFloor: function () {
-      return this.currentFloor;
-    },
-  
-    upOneFloor: function () {
-      if (this.currentFloor < 16) {
-        this.currentFloor++;
-        return this.currentFloor;
-      } else {
-        return 'Error!';
-      }
-    },
-  
-    downOneFloor: function () {
-      if (this.currentFloor > 1) {
-        this.currentFloor--;
-        return this.currentFloor;
-      } else {
-        return 'Error!';
-      }
-    },
-  
-    toFloor: function (floor) {
-      if (floor < 1 || floor > 16) {
-        return 'Error!';
-      }
-  
-      while (this.currentFloor < floor) {
-        this.upOneFloor();
-        return this.printFloor();
-      }
-  
-      while (this.currentFloor > floor) {
-        this.downOneFloor();
-        return this.printFloor();
-      }
-  
-      return `Вы на ${floor}`;
-    },
-  };
-  console.log(checkTask.printFloor());
-  console.log(checkTask.upOneFloor());
-  console.log(checkTask.upOneFloor());
-  console.log(checkTask.upOneFloor());
-  console.log(checkTask.downOneFloor());
-  console.log(checkTask.toFloor(0));
-  console.log(checkTask.toFloor(3));
-  // P.S: платформа приняла
-  
+
+    // ПИСАТЬ КОД ЗДЕСЬ
+
+    let elevator = {
+      currentFloor: 1,
+      printFloor: function () {
+        console.log("Current floor:", this.currentFloor);
+      },
+    
+      upOneFloor: function () {
+        if (this.currentFloor < 16) {
+          this.currentFloor++;
+        } else {
+          console.log('Error!');
+        }
+      },
+    
+      downOneFloor: function () {
+        if (this.currentFloor > 1) {
+          this.currentFloor--;
+        } else {
+          console.log('Error!');
+        }
+      },
+    
+      toFloor: function (floor) {
+        if (floor < 1 || floor > 16) {
+          console.log('Error!');
+          return;
+        }
+    
+        while (this.currentFloor < floor) {
+          this.upOneFloor();
+          this.printFloor();
+        }
+    
+        while (this.currentFloor > floor) {
+          this.downOneFloor();
+          this.printFloor();
+        }
+    
+        console.log(`Вы на ${floor} этаже`);
+      },
+    };
+    
+    elevator.printFloor();
+    elevator.upOneFloor();
+    elevator.printFloor();
+    elevator.downOneFloor();
+    elevator.printFloor();
+    elevator.toFloor(0);
+    elevator.toFloor(16);
+    
